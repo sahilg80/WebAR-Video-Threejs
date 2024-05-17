@@ -12,16 +12,18 @@
 
   <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
 
-  
+
 </head>
 
 <body>
 
-  <video id="video" controls width="250" display="none" loop muted="false" autoplay="true" controls>
+  <div style="display: none;">
+    <video id="video" controls width="250" loop muted="false" autoplay="true" controls>
 
-    <source src="https://alok760.in/media/video/Ayush_Transparent.webm" type="video/webm" crossorigin="anonymous" />
+      <source src="https://alok760.in/media/video/Ayush_Transparent.webm" type="video/webm" crossorigin="anonymous" />
 
-  </video>
+    </video>
+  </div>
 
 
   <!-- Starting an immersive WebXR session requires user interaction.
@@ -58,8 +60,10 @@
       camera.matrixAutoUpdate = false;
 
       // Initialize a WebXR session using "immersive-ar".
-      const session = await navigator.xr.requestSession("immersive-ar", { requiredFeatures: ['hit-test'] , 
-      optionalFeatures: [ 'light-estimation' ]});
+      const session = await navigator.xr.requestSession("immersive-ar", {
+        requiredFeatures: ['hit-test'],
+        optionalFeatures: ['light-estimation']
+      });
 
       session.updateRenderState({
         baseLayer: new XRWebGLLayer(session, gl)
@@ -135,8 +139,8 @@
           info3DModel.position.set(tempPosition.x + 0.4, tempPosition.y + 1, tempPosition.z);
           info3DModel.visible = true;
 
-          const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-          scene.add( light );
+          const light = new THREE.AmbientLight(0x404040); // soft white light
+          scene.add(light);
 
         }
       });
